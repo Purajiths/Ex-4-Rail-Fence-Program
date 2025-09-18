@@ -19,7 +19,34 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
+```
+def encrypt_rail_fence(message, rails):
+    length = len(message)
+    rail = [['\n' for _ in range(length)] for _ in range(rails)]
+    row = 0
+    direction = 1
+    for i in range(length):
+        rail[row][i] = message[i]
+        row += direction
+        if row == rails - 1 or row == 0:
+            direction *= -1
+    encrypted = ''
+    for i in range(rails):
+        for j in range(length):
+            if rail[i][j] != '\n':
+                encrypted += rail[i][j]
+    print("Encrypted text:", encrypted)
+def main():
+    message = input("Enter a Secret Message: ").replace(" ", "")
+    rails = int(input("Enter number of rails: "))
+    encrypt_rail_fence(message, rails)
+if __name__ == "__main__":
+    main()
+```
 
 # OUTPUT
+<img width="1555" height="707" alt="image" src="https://github.com/user-attachments/assets/2e87095d-065d-46fc-ba24-373c76eca93b" />
+
 
 # RESULT
+the program is executed successfully
